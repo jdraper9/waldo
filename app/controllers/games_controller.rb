@@ -9,6 +9,8 @@ post '/games' do
 	station_at = params[:station_at]
 	awaiting_train = params[:train]
 	ends_at = get_end_time(station_at, awaiting_train)
+	p "/^<>|?//"*20
+	p ends_at
 	game = Game.create({
 			ends_at: ends_at,
 			active: true,
@@ -23,5 +25,9 @@ end
 
 get '/games/:id' do
 	@game = Game.find(params[:id])
-	erb :'games/show'
+	if request.xhr?
+		@game.ends_at.to_s
+	else
+		erb :'games/show'
+	end
 end

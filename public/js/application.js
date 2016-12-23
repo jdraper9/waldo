@@ -5,15 +5,37 @@ $(document).ready(function() {
 
   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
 
+	$(function(){
+		function addZero(i) {
+		    if (i < 10) {
+		        i = "0" + i;
+		    }
+		    return i;
+		}
+	
+		var d = new Date();
+		var m = addZero(d.getMinutes());
+		var s = addZero(d.getSeconds());
+		var x = m + ":" + s;
+		
 
-
-});
-
-$(function(){
-	$(".digits").countdown({
-		image: "/img/digits.png",
-		format: "mm:ss",
-		startTime: "25:14"
+		$.ajax({
+			method: 'get',
+			url: window.location.pathname
+		}).done(function(result){
+			console.log(result);
+		})
+	
+		$(".digits").countdown({
+			image: "/img/digits.png",
+			format: "mm:ss",
+			startTime: x,
+			timerEnd: function(){window.location.href = "/";}
+		});
+	
+	
+	
 	});
-	console.log('uh');
+
 });
+
