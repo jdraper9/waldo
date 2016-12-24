@@ -1,0 +1,23 @@
+<div class="main-show">
+	<% if @game.waldo_id == current_user.id %>
+		<h2>You're Waldo! Don't get caught</h2>
+		<p>..but if they find you, tell them: <%= @game.waldo_key %></p>
+	<% else %>
+		<h2>Find Waldo!</h2>
+		<p>Waldo's Description: <%= @game.waldo_description %></p>
+		<p>if you succeed, enter your code here: </p>
+		<form method='post' action="/games/<%= @game.id %>">
+			<input type="hidden" name="_method" value="put">
+			<input type="text" name="code">
+			<input type="submit" name="submit">
+		</form>
+	<% end %>
+	
+	<div class="wrapper">
+	  <div class="cell">
+	    <div id="holder">
+	      <div class="digits"></div>
+	    </div>
+	  </div>
+	</div>
+</div>
