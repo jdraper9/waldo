@@ -8,7 +8,13 @@ get '/' do
 end
 
 post '/' do
+	station = Station.find_by(abbr: params[:station])
+	@game = (station.games.find{ |game| game.active == true})
 	session[:station_abbr] = params[:station]
 	session[:departures] = get_departures(@params[:station])
-	redirect '/'
+	if @game
+		redirect "/games/#{@game.id}"
+	else
+		redirect '/'
+	end
 end

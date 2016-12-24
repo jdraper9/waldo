@@ -1,0 +1,5 @@
+<% if @game.winner_id == current_user.id %>
+	<h2>You won!</h2>
+<% else %>
+	<h2>You lost, sorry bud</h2>
+<% end %>
