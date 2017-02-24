@@ -11,3 +11,6 @@ User 1 arrives at Montg. Station, and decides to play Waldo (of course). User 1 
 ** Thoughts **
 
 * When creating game, give it a 'game ends' time, which is Time.now + however many minutes until train. Other players then reference that time to see if game is over. Only games that are active will be available.
+
+>
+	This is a work in progress. Eventually I want to use Firebase as backend and React Native as frontend. This repo is just a proof of concept on Rails
